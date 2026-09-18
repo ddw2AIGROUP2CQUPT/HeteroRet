@@ -1,7 +1,8 @@
-# HeteroRet
+<img width="1731" height="1099" alt="架构图" src="https://github.com/user-attachments/assets/490abc90-7017-4c66-b411-45bba9684d08" /># HeteroRet
 HeteroRet: An Image Retrieval Framework with Heterogeneous Training and Inference
 * pipeline:
-  <img width="1731" height="1099" alt="架构图" src="https://github.com/user-attachments/assets/34bdaa40-4c75-455d-a87d-23733aa8522a" />
+<img width="1731" height="1099" alt="架构图" src="https://github.com/user-attachments/assets/db4cc245-c8c9-4bfb-bfb0-a87d4a6a71b1" />
+
 
 ## Installation
 
