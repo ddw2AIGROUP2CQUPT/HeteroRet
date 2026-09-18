@@ -43,5 +43,6 @@ See(https://github.com/filipradenovic/revisitop) for details
   | HeteroRet | Global + Re-ranking | **95.18** | **77.31** | **54.6** |
 
   * on rparis6k(updating)
+    
     All training set version is GLDv2-clean (81313, 1580470)
     
