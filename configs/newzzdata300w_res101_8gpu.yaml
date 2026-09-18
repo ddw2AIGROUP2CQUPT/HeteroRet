@@ -1,0 +1,43 @@
+MODEL:
+  TYPE: resnet
+  DEPTH: 101
+  NUM_CLASSES: 72296  # 修改为 72296 类,有72296个图片
+  HEADS:
+    IN_FEAT: 2048
+    REDUCTION_DIM: 512
+    MARGIN: 0.15
+    SCALE: 30
+RESNET:
+  TRANS_FUN: bottleneck_transform
+  NUM_GROUPS: 1
+  WIDTH_PER_GROUP: 64
+  STRIDE_1X1: False
+BN:
+  ZERO_INIT_FINAL_GAMMA: True
+OPTIM:
+  BASE_LR: 0.1  # 降低学习率以适配新数据集（原 0.2）
+  LR_POLICY: cos
+  STEPS: [0, 30, 60, 90]
+  LR_MULT: 0.1
+  MAX_EPOCH: 50  # 增加 epoch 数（原 100），可根据需要调整
+  MOMENTUM: 0.9
+  NESTEROV: True
+  WEIGHT_DECAY: 0.0001
+  WARMUP_EPOCHS: 5
+TRAIN:
+  DATASET: /home/ubuntu/public-Datasets/hxl/newzzdata_300w/augmented_basedata  # 保持不变（假设代码支持通用数据集格式）
+  SPLIT: /home/ubuntu/public-Datasets/hxl/newzzdata_300w/augmented_basedata/train_list.txt  # 修改为你的训练集标注文件
+  BATCH_SIZE: 256  # 降低批大小以减少显存占用（原 512）
+  IM_SIZE: 512
+  EVAL_PERIOD: 100 
+TEST:
+  DATASET: /home/ubuntu/public-Datasets/hxl/newzzdata_300w/augmented_basedata
+  SPLIT: /home/ubuntu/public-Datasets/hxl/newzzdata_300w/augmented_basedata/val_list.txt  # 新生成的验证集标注文件
+  BATCH_SIZE: 64
+  IM_SIZE: 512
+NUM_GPUS: 8
+DATA_LOADER:
+  NUM_WORKERS: 8  #增大，原来=4
+CUDNN:
+  BENCHMARK: True
+OUT_DIR: ./output

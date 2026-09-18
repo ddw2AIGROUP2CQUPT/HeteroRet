@@ -1,0 +1,71 @@
+# ViT-based DELG configuration
+MODEL:
+  TYPE: "vit"
+  NUM_CLASSES: 98722  # 修改！！
+  # NUM_CLASSES: 81313
+  HEADS:
+    REDUCTION_DIM: 512
+    # SCALE: 15          # 修改
+    # MARGIN: 0.05       # 修改
+    SCALE: 30          # 修改
+    MARGIN: 0.15       # 修改
+
+# ViT specific settings
+VIT:
+  MODEL_NAME: "vit_base_patch16_224"
+  PRETRAINED: True
+  IMAGE_SIZE: 224
+
+# Batch Normalization settings (ViT中的LayerNorm可能会用到)
+BN:
+  EPS: 1e-5
+  MOM: 0.1
+
+
+# Training settings
+TRAIN:
+  DATASET: /home/ubuntu/public-Datasets/hxl/newzzdata_300w/augmented_casdata_9w
+  SPLIT: /home/ubuntu/public-Datasets/hxl/newzzdata_300w/augmented_casdata_9w/train_list.txt
+  # DATASET: /home/ubuntu/workplace01/hxl/delg-pytorch/DELG/datasets/data/landmark
+  # SPLIT: /home/ubuntu/workplace01/hxl/delg-pytorch/DELG/datasets/data/landmark/train_list.txt
+  BATCH_SIZE: 256
+  IM_SIZE: 224        # 与VIT.IMAGE_SIZE保持一致
+  EVAL_PERIOD: 1
+  CHECKPOINT_PERIOD: 1
+
+# Testing settings  
+TEST:
+  DATASET: /home/ubuntu/public-Datasets/hxl/newzzdata_300w/augmented_casdata_9w
+  SPLIT: /home/ubuntu/public-Datasets/hxl/newzzdata_300w/augmented_casdata_9w/val_list.txt
+  # DATASET: /home/ubuntu/workplace01/hxl/delg-pytorch/DELG/datasets/data/landmark
+  # SPLIT: /home/ubuntu/workplace01/hxl/delg-pytorch/DELG/datasets/data/landmark/val_list.txt
+  BATCH_SIZE: 128
+  IM_SIZE: 256
+
+# Optimizer settings - 更保守的ViT设置
+OPTIM:
+  BASE_LR: 0.003     # 修改：进一步降低学习率
+  LR_POLICY: "cos"
+  MAX_EPOCH: 100
+  MOMENTUM: 0.9
+  WEIGHT_DECAY: 0.0001  # 修改：ViT推荐的权重衰减
+  WARMUP_EPOCHS: 3   # 修改：减少warmup epochs
+  WARMUP_FACTOR: 0.1  # 从BASE_LR * 0.1开始
+  STEPS: []           # cos策略不需要steps
+
+# Multi-GPU settings
+NUM_GPUS: 8
+DIST_BACKEND: "nccl"
+
+# 新增：数据加载器配置
+DATA_LOADER:
+  NUM_WORKERS: 8
+  PIN_MEMORY: True
+
+# 新增：CUDNN优化
+CUDNN:
+  BENCHMARK: True
+
+# Output settings
+OUT_DIR: "./output"
+LOG_PERIOD: 10
