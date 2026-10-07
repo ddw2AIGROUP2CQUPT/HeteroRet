@@ -1,4 +1,4 @@
-# HeteroRet
+# HeteroRet-Instance-level image retrieval
 HeteroRet-Instance-level image retrieval
 * pipeline:
 <img width="1731" height="1099" alt="架构图" src="https://github.com/user-attachments/assets/db4cc245-c8c9-4bfb-bfb0-a87d4a6a71b1" />
