@@ -24,6 +24,9 @@ Extracting global and local feature for multi-scales
 
     python tools/vit_delg_extract_superglobal.py --cfg configs/landmark_vit_8gpu_20251203.yaml
 
+## Weights
+pretrained weights are available in [here](https://pan.baidu.com/s/1DQOdxoQJqwEBZlwtKP1qGg?pwd=tuup).
+
 ## Datasets: ROxf and RPar
 See(https://github.com/filipradenovic/revisitop) for details
 
@@ -32,6 +35,7 @@ See(https://github.com/filipradenovic/revisitop) for details
     cd tools/revisitop
     python my_evaluate_fixed_superglobal.py
 
+### Results
   * on roxford5k
 
 **| Backbone | Method | mAP E | mAP M | mAP H |**
