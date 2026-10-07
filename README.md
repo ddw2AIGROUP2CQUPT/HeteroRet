@@ -1,5 +1,5 @@
 # HeteroRet
-HeteroRet: An Image Retrieval Framework with Heterogeneous Training and Inference
+HeteroRet-Instance-level image retrieval
 * pipeline:
 <img width="1731" height="1099" alt="架构图" src="https://github.com/user-attachments/assets/db4cc245-c8c9-4bfb-bfb0-a87d4a6a71b1" />
 
@@ -27,7 +27,7 @@ Extracting global and local feature for multi-scales
 ## Datasets: ROxf and RPar
 See(https://github.com/filipradenovic/revisitop) for details
 
-### Results
+### Test
 
     cd tools/revisitop
     python my_evaluate_fixed_superglobal.py
